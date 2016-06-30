@@ -1,0 +1,29 @@
+{
+  "name": "storage-pro",
+  "description": "description of storage-pro",
+  "main": [
+    "dist/dist.js"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/*",
+    "!dist/**/*",
+    "!src/**/*",
+    "!CHANGELOG",
+    "!README.md",
+    "!bower.json"
+  ],
+  "keywords": [],
+  "authors": [],
+  "homepage": "https://github.com/D-Mobilelab/storage-pro",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/D-Mobilelab/storage-pro.git"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "private": false
+}
