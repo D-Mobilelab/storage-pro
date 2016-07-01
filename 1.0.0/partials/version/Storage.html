@@ -1,0 +1,142 @@
+<h1><code ng:non-bindable="">Storage</code>
+<div><span class="hint"></span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="storage-page"><p>Storage is the library to save and get data in different ways.</p>
+<h3 id="description_import-&amp;-usage">Import &amp; Usage</h3>
+<pre class="prettyprint linenums">
+&lt;script type="text/javascript" src="./bower_components/storage-pro/dist/dist.js"&gt; 
+</pre>
+Now you can use global object <strong>Storage</strong> and associated methods, described below. <br/>
+You can start by initializing it with <a href="#/version/Storage#methods_init">init</a> method.</p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_delete">delete(key, options)</h3>
+<div class="delete"><div class="storage-delete-page"><p>This method is used to delete a stored value.</p>
+</div><h5 id="methods_delete_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>key</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="storage-delete-page"><p>key to identify value</p>
+</div></td></tr><tr><td>options</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="storage-delete-page"><p>(see param below)</p>
+</div><table><thead><tr><th>Property</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>type</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="storage-delete-page"><p>type of storage where delete data, use this only if different from default value defined before in <a href="#/version/Storage#methods_init">init</a> method</p>
+</div> <p><em>(default: null)</em></p></td></tr></tbody></table></td></tr></tbody></table><h4 id="methods_delete_example">Example</h4>
+<div class="example"><div class="storage-delete-page"><pre class="prettyprint linenums">
+// Storage delete variable from default type storage (defined in init method)
+Storage.delete('country');
+
+// Storage delete variable as cookie
+Storage.delete('country', {type: 'cookie'});
+</pre>
+</div></div>
+</div>
+</li>
+<li><h3 id="methods_get">get(key, options)</h3>
+<div class="get"><div class="storage-get-page"><p>This method is used to get a value from the storage.</p>
+</div><h5 id="methods_get_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>key</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="storage-get-page"><p>key to identify data</p>
+</div></td></tr><tr><td>options</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="storage-get-page"><p>(see param below)</p>
+</div><table><thead><tr><th>Property</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>type</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="storage-get-page"><p>type of storage where load data, use this only if different from default value defined before in <a href="#/version/Storage#methods_init">init</a> method</p>
+</div> <p><em>(default: null)</em></p></td></tr></tbody></table></td></tr></tbody></table><h5 id="methods_get_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">*</a></td><td><div class="storage-get-page"><p>saved data</p>
+</div></td></tr></table><h4 id="methods_get_example">Example</h4>
+<div class="example"><div class="storage-get-page"><pre class="prettyprint linenums">
+// Storage loads variable from default type storage (defined in init method)
+Storage.get('country', 'it');
+
+// Storage loads variable as cookie
+Storage.get('isLogged', {type: 'cookie'});
+</pre>
+</div></div>
+</div>
+</li>
+<li><h3 id="methods_getmultiple">getMultiple(keys, options)</h3>
+<div class="getmultiple"><div class="storage-getmultiple-page"><p>This method is used to get multiple values from the storage.</p>
+</div><h5 id="methods_getmultiple_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>keys</td><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="storage-getmultiple-page"><p>keys to identify data</p>
+</div></td></tr><tr><td>options</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="storage-getmultiple-page"><p>(see param below)</p>
+</div><table><thead><tr><th>Property</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>type</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="storage-getmultiple-page"><p>type of storage where load data, use this only if different from default value defined before in <a href="#/version/Storage#methods_init">init</a> method</p>
+</div> <p><em>(default: null)</em></p></td></tr></tbody></table></td></tr></tbody></table><h5 id="methods_getmultiple_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">*</a></td><td><div class="storage-getmultiple-page"><p>saved datas</p>
+</div></td></tr></table><h4 id="methods_getmultiple_example">Example</h4>
+<div class="example"><div class="storage-getmultiple-page"><pre class="prettyprint linenums">
+// Storage loads variables from default type storage (defined in init method)
+Storage.getMultiple(['country', 'isLogged']);
+// it returns {country: 'it', isLogged: true}
+
+// Storage loads variables as cookie
+Storage.getMultiple(['country', 'isLogged'], {type: 'cookie'});
+// it returns {country: 'it', isLogged: true}
+</pre>
+</div></div>
+</div>
+</li>
+<li><h3 id="methods_init">init(options)</h3>
+<div class="init"><div class="storage-init-page"><p>Init storage module.</p>
+</div><h5 id="methods_init_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>options</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="storage-init-page"><p>(see attributes below)</p>
+</div><table><thead><tr><th>Property</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>type</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="storage-init-page"><p>Define default storage that you want to use. <br/>
+It must be one of these options:</p>
+<ul>
+<li>localstorage</li>
+<li>cookie</li>
+<li>jsobject</li>
+</ul>
+</div> <p><em>(default: 'cookie')</em></p></td></tr><tr><td>logger</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="storage-init-page"><p>any object containing the following methods: debug, log, info, warn, error</p>
+</div></td></tr><tr><td>verbose</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="storage-init-page"><p>if true Storage logs also get methods</p>
+</div> <p><em>(default: false)</em></p></td></tr></tbody></table></td></tr></tbody></table><h4 id="methods_init_example">Example</h4>
+<div class="example"><div class="storage-init-page"><pre class="prettyprint linenums">
+Storage.init({
+  type: 'cookie',
+  logger: console
+  verbose: false
+});
+</pre>
+</div></div>
+</div>
+</li>
+<li><h3 id="methods_islocalstoragesupported">isLocalStorageSupported()</h3>
+<div class="islocalstoragesupported"><div class="storage-islocalstoragesupported-page"><p>This method is used to know if the browser support the local storage</p>
+</div><h5 id="methods_islocalstoragesupported_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="storage-islocalstoragesupported-page"><p>true if supported, else false</p>
+</div></td></tr></table><h4 id="methods_islocalstoragesupported_example">Example</h4>
+<div class="example"><div class="storage-islocalstoragesupported-page"><pre class="prettyprint linenums">
+if(Storage.isLocalStorageSupported()) {
+     // store a localstorage key
+ } else {
+     alert('local storage is not supported');
+ }
+</pre>
+</div></div>
+</div>
+</li>
+<li><h3 id="methods_set">set(key, value, options)</h3>
+<div class="set"><div class="storage-set-page"><p>This method is used to set a value in the storage.</p>
+</div><h5 id="methods_set_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>key</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="storage-set-page"><p>key to identify data</p>
+</div></td></tr><tr><td>value</td><td><a href="" class="label type-hint type-hint-object">*</a></td><td><div class="storage-set-page"><p>data to store</p>
+</div></td></tr><tr><td>options</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="storage-set-page"><p>(see param below)</p>
+</div><table><thead><tr><th>Property</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>type</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="storage-set-page"><p>type of storage where save data, use this only if different from default value defined before in <a href="#/version/Storage#methods_init">init</a> method</p>
+</div> <p><em>(default: null)</em></p></td></tr><tr><td>exdays</td><td><a href="" class="label type-hint type-hint-integer">Integer</a></td><td><div class="storage-set-page"><p>expirations days of saved data (valid only for cookie)</p>
+</div> <p><em>(default: null)</em></p></td></tr><tr><td>exhours</td><td><a href="" class="label type-hint type-hint-integer">Integer</a></td><td><div class="storage-set-page"><p>expirations hours of saved data (valid only for cookie, if exdays is undefined)</p>
+</div> <p><em>(default: null)</em></p></td></tr><tr><td>exminutes</td><td><a href="" class="label type-hint type-hint-integer">Integer</a></td><td><div class="storage-set-page"><p>expirations minutes of saved data (valid only for cookie, if exdays and exhours are undefined)</p>
+</div> <p><em>(default: null)</em></p></td></tr></tbody></table></td></tr></tbody></table><h4 id="methods_set_example">Example</h4>
+<div class="example"><div class="storage-set-page"><pre class="prettyprint linenums">
+// Storage saves variable in default type storage (defined in init method)
+Storage.set('country', 'it');
+
+// Storage saves variable as cookie
+Storage.set('isLogged', true, {type: 'cookie'});
+</pre>
+</div></div>
+</div>
+</li>
+<li><h3 id="methods_setmultiple">setMultiple(key, options)</h3>
+<div class="setmultiple"><div class="storage-setmultiple-page"><p>This method is used to set multiple values in the storage.</p>
+</div><h5 id="methods_setmultiple_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>key</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="storage-setmultiple-page"><p>data to save</p>
+</div></td></tr><tr><td>options</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="storage-setmultiple-page"><p>(see param below)</p>
+</div><table><thead><tr><th>Property</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>type</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="storage-setmultiple-page"><p>type of storage where save data, use this only if different from default value defined before in <a href="#/version/Storage#methods_init">init</a> method</p>
+</div> <p><em>(default: null)</em></p></td></tr></tbody></table></td></tr></tbody></table><h4 id="methods_setmultiple_example">Example</h4>
+<div class="example"><div class="storage-setmultiple-page"><pre class="prettyprint linenums">
+// Storage saves variables in default type storage (defined in init method)
+Storage.setMultiple({country: 'it', isLogged: true});
+
+// Storage saves variables as cookies
+Storage.setMultiple({country: 'it', isLogged: true}, {type: 'cookie'});
+</pre>
+</div></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
