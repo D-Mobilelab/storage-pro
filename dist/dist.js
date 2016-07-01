@@ -1,7 +1,7 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.Storage = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 module.exports = new function(){
 
-	var tryParse = function(value){
+    var tryParse = function(value){
         try { 
             return JSON.parse(value);
         } catch (err) {
@@ -17,23 +17,25 @@ module.exports = new function(){
         };
 
         this.next = function(){
+            var toReturn, charPos, values;
+
             // return undefined if the list is empty
             if (cookiesList.length === 0) {
                 return undefined;
             }
 
             // dequeue first element of cookiesList
-            var toReturn = cookiesList.shift();
+            toReturn = cookiesList.shift();
 
             // remove leading whitespaces only
-            var charPos = 0;
+            charPos = 0;
             while (toReturn[charPos] === ' '){
                 charPos++;
             }
             toReturn = toReturn.substring(charPos);
 
             // split 'key=value' string by first '=' occurrence (regex greedy operator)
-            var values = toReturn.split(/=(.+)?/);
+            values = toReturn.split(/=(.+)?/);
             return [values[0], values[1]];
         };
     };
@@ -57,23 +59,21 @@ module.exports = new function(){
 
     this.set = function(key, value, options){
         var newCookie = key + '=' + JSON.stringify(value);
+        var d = new Date();
         
         // set default exdays value
         if(!!options){
-	        if (typeof(options.exdays) !== 'undefined'){
-	            var d = new Date();
-	            d.setTime(d.getTime() + (options.exdays * 24 * 60 * 60 * 1000));
-	            newCookie += '; expires=' + d.toUTCString();
-	        } else if(typeof(options.exhours) !== 'undefined') {
-	        	var d = new Date();
-	            d.setTime(d.getTime() + (options.exhours * 60 * 60 * 1000));
-	            newCookie += '; expires=' + d.toUTCString();
-	        } else if(typeof(options.exminutes) !== 'undefined') {
-	        	var d = new Date();
-	            d.setTime(d.getTime() + (options.exminutes * 60 * 1000));
-	            newCookie += '; expires=' + d.toUTCString();
-	        }
-	    }
+            if (typeof(options.exdays) !== 'undefined'){
+                d.setTime(d.getTime() + (options.exdays * 24 * 60 * 60 * 1000));
+                newCookie += '; expires=' + d.toUTCString();
+            } else if(typeof(options.exhours) !== 'undefined') {
+                d.setTime(d.getTime() + (options.exhours * 60 * 60 * 1000));
+                newCookie += '; expires=' + d.toUTCString();
+            } else if(typeof(options.exminutes) !== 'undefined') {
+                d.setTime(d.getTime() + (options.exminutes * 60 * 1000));
+                newCookie += '; expires=' + d.toUTCString();
+            }
+        }
             
         // set cookie
         document.cookie = newCookie;
@@ -106,7 +106,7 @@ module.exports = new function(){
 },{}],2:[function(require,module,exports){
 module.exports = new function(){
 
-	var jsObj = {};
+    var jsObj = {};
 
     this.get = function(key){
         return jsObj[key];
@@ -194,16 +194,15 @@ module.exports = new function(){
 
 module.exports = new function() {
 
-	var storages = {
-	    'cookie': require('./cookie'),
-	    'localstorage': require('./localstorage'),
-	    'jsobject': require('./jsobject')
-	};
+    var storages = {
+        'cookie': require('./cookie'),
+        'localstorage': require('./localstorage'),
+        'jsobject': require('./jsobject')
+    };
     
-	var selectedStorage, logger, verbose;
-
+    var selectedStorage, logger, verbose;
     this.init = function(options){
-    	if (options.logger){
+        if (!!options && options.logger){
             logger = options.logger;
         } else {
             logger = { 
@@ -215,21 +214,20 @@ module.exports = new function() {
             };
         }
 
-        if (options.verbose){
+        if (!!options && options.verbose){
             verbose = options.verbose;
         } else {
             verbose = false;
         }
 
-        if(options.type){
-        	selectedStorage = storages[options.type];
+        if(!!options && options.type){
+            selectedStorage = storages[options.type];
         } else {
-        	selectedStorage = storages['cookie'];
+            selectedStorage = storages.cookie;
         }
 
         logger.log('Storage', 'init', options);
     };
-
     this.set = function(key, value, options){
         if(!!options && !!options.type){
             storages[options.type].set(key, value, options);
@@ -239,37 +237,6 @@ module.exports = new function() {
 
         logger.log('Storage', 'set', key, value, options);
     };
-
-    this.get = function(key, options){
-        var value;
-        if(!!options && !!options.type){
-            value = storages[options.type].get(key, options);
-        } else {
-            value = selectedStorage.get(key, options);
-        }
-        
-        if(verbose){
-       		logger.log('Storage', 'get', key, value, options);
-       	}
-
-        return value;
-    };
-
-    this.getMultiple = function(keys, options){
-        var values;
-        if(!!options && !!options.type){
-            values = storages[options.type].getMultiple(keys, options);
-        } else {
-            values = selectedStorage.getMultiple(keys, options);
-        }
-        
-        if(verbose){
-       		logger.log('Storage', 'getMultiple', values, options);
-       	}
-
-        return values;
-    };
-
     this.setMultiple = function(params, options){
         if(!!options && !!options.type){
             storages[options.type].setMultiple(params, options);
@@ -279,7 +246,34 @@ module.exports = new function() {
         
         logger.log('Storage', 'setMultiple', params, options);
     };
+    this.get = function(key, options){
+        var value;
+        if(!!options && !!options.type){
+            value = storages[options.type].get(key, options);
+        } else {
+            value = selectedStorage.get(key, options);
+        }
+        
+        if(verbose){
+            logger.log('Storage', 'get', key, value, options);
+        }
 
+        return value;
+    };
+    this.getMultiple = function(keys, options){
+        var values;
+        if(!!options && !!options.type){
+            values = storages[options.type].getMultiple(keys, options);
+        } else {
+            values = selectedStorage.getMultiple(keys, options);
+        }
+        
+        if(verbose){
+            logger.log('Storage', 'getMultiple', values, options);
+        }
+
+        return values;
+    };
     this.delete = function(key, options){
         if(!!options && !!options.type){
             storages[options.type].delete(key, options);
@@ -289,7 +283,6 @@ module.exports = new function() {
         
         logger.log('Storage', 'delete', key, options);
     };
-
     this.isLocalStorageSupported = function(){
         var name = 'test';
         try {

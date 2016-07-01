@@ -52,7 +52,7 @@ module.exports = new function() {
      * 
     */
     this.init = function(options){
-        if (options.logger){
+        if (!!options && options.logger){
             logger = options.logger;
         } else {
             logger = { 
@@ -64,13 +64,13 @@ module.exports = new function() {
             };
         }
 
-        if (options.verbose){
+        if (!!options && options.verbose){
             verbose = options.verbose;
         } else {
             verbose = false;
         }
 
-        if(options.type){
+        if(!!options && options.type){
             selectedStorage = storages[options.type];
         } else {
             selectedStorage = storages.cookie;

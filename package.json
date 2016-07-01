@@ -1,14 +1,26 @@
 {
   "name": "storage-pro",
   "version": "1.0.0",
-  "description": "description of storage-pro",
-  "keywords": [],
+  "description": "Library to set and get data in different ways",
+  "keywords": [
+    "storage",
+    "cookie",
+    "cookies",
+    "localstorage",
+    "javascript"
+  ],
   "homepage": "https://github.com/D-Mobilelab/storage-pro",
   "bugs": {
     "url": "https://github.com/D-Mobilelab/storage-pro/issues"
   },
   "license": "MIT",
-  "contributors": [],
+  "contributors": [{
+      "name": "Fabio Fognani",
+      "email": "fabio.fognani@buongiorno.com"
+  }, {
+      "name": "Aurelio Merenda",
+      "email": "aurelio.merenda@buongiorno.com"
+  }],
   "repository": {
     "type": "git",
     "url": "git://github.com/D-Mobilelab/storage-pro.git"

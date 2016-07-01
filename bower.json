@@ -1,6 +1,6 @@
 {
   "name": "storage-pro",
-  "description": "description of storage-pro",
+  "description": "Library to set and get data in different ways",
   "main": [
     "dist/dist.js"
   ],
@@ -16,8 +16,20 @@
     "!README.md",
     "!bower.json"
   ],
-  "keywords": [],
-  "authors": [],
+  "keywords": [
+    "storage",
+    "cookie",
+    "cookies",
+    "localstorage",
+    "javascript"
+  ],
+  "authors": [{
+      "name": "Fabio Fognani",
+      "email": "fabio.fognani@buongiorno.com"
+  }, {
+      "name": "Aurelio Merenda",
+      "email": "aurelio.merenda@buongiorno.com"
+  }],
   "homepage": "https://github.com/D-Mobilelab/storage-pro",
   "repository": {
     "type": "git",
