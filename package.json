@@ -14,13 +14,16 @@
     "url": "https://github.com/D-Mobilelab/storage-pro/issues"
   },
   "license": "MIT",
-  "contributors": [{
+  "contributors": [
+    {
       "name": "Fabio Fognani",
       "email": "fabio.fognani@buongiorno.com"
-  }, {
+    },
+    {
       "name": "Aurelio Merenda",
       "email": "aurelio.merenda@buongiorno.com"
-  }],
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/D-Mobilelab/storage-pro.git"
@@ -32,6 +35,7 @@
     "browserify": "^13.0.1",
     "browserify-istanbul": "^2.0.0",
     "coveralls": "^2.11.9",
+    "dml-js-boilerplate": "^2.0.0",
     "eslint-config-airbnb": "^0.1.0",
     "eslint-plugin-react": "^5.1.1",
     "grunt": "^0.4.5",
