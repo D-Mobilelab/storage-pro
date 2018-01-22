@@ -73,6 +73,10 @@ module.exports = new function(){
                 d.setTime(d.getTime() + (options.exminutes * 60 * 1000));
                 newCookie += '; expires=' + d.toUTCString();
             }
+
+            if(options.path){
+                newCookie += '; path=' + options.path;
+            }
         }
             
         // set cookie
