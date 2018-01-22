@@ -73,7 +73,7 @@ module.exports = new function(){
                 newCookie += '; expires=' + d.toUTCString();
             }
 
-            if(options.path){
+            if (typeof (options.path) !== 'undefined'){
                 newCookie += '; path=' + options.path;
             }
         }
