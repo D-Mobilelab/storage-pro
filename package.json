@@ -28,6 +28,7 @@
     "type": "git",
     "url": "git://github.com/D-Mobilelab/storage-pro.git"
   },
+  "main": "dist/dist.js",
   "scripts": {},
   "dependencies": {},
   "devDependencies": {
