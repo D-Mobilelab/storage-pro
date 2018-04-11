@@ -1,3 +1,6 @@
+** 1.2.1 **
+delete cookie with path
+
 ** 1.2.0 **
 - Add main to package json
 
