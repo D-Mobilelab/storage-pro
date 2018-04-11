@@ -102,8 +102,13 @@ module.exports = new function(){
         }
     };
 
-    this.delete = function(key){
-        this.set(key, '', { exdays: -1 });
+    this.delete = function(key, options){
+        if(options && (options.path)){
+            options.exdays = -1;
+            this.set(key, '', options);
+        } else {
+            this.set(key, '', { exdays: -1 });
+        }
     };
 
 };
