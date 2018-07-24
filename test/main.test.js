@@ -61,6 +61,23 @@ describe('main -', function () {
 			Storage.delete(keyName, { type: 'jsobject' });
 			expect(Storage.get(keyName, { type: 'jsobject' })).toBeUndefined();
 		});
+
+		it('if value is string, it should not been wrapped with extra double quotes', function(){
+			var keyName = 'hello';
+			var keyvalue = 'world';
+			Storage.set(keyName, keyvalue);
+
+			var rawcookies = document.cookie.split(';');
+			var toCheck;
+			for (var i in rawcookies) {
+				var cookie = rawcookies[i].trim().split('=');
+				if (cookie[0] === keyName) {
+					toCheck = cookie[1];
+				}
+			}
+			expect(toCheck).not.toMatch(/^\"(.*)\"$/);
+			expect(Storage.get(keyName)).not.toMatch(/^\"(.*)\"$/);
+		});
 	});
 
 	describe('localstorage -', function(){

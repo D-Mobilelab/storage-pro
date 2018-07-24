@@ -11,5 +11,22 @@
 		<script src="../dist/dist.js"></script>
 		<script src="../mock.js"></script>
 		<script src="index.js"></script>
+
+		<form id="form">
+			<input type="text" name="test">
+
+		</form>
+		<script>
+			var form = document.getElementById('form');
+			form.addEventListener('submit', function(e) {
+			    e.preventDefault();
+			    var val = form.getElementsByTagName('input')[0].value;
+			    var key = 'prova' + Math.floor(Math.random() * 10);
+			    Storage.set(key, val);
+
+			    console.log(Storage.get(key));
+			});
+		</script>
+
 	</body>
 </html>
