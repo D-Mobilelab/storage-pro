@@ -57,7 +57,8 @@ module.exports = new function(){
     };
 
     this.set = function(key, value, options){
-        var newCookie = key + '=' + JSON.stringify(value);
+        var parsedValue = value instanceof Object ? JSON.stringify(value) : value;
+        var newCookie = key + '=' + parsedValue;
         var d = new Date();
         
         // set default exdays value
