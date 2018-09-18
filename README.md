@@ -4,7 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/D-Mobilelab/storage-pro/badge.svg?branch=master&v=1)](https://coveralls.io/github/D-Mobilelab/storage-pro?branch=master)
 [![npm version](https://badge.fury.io/js/storage-pro.svg)](https://badge.fury.io/js/storage-pro)
 [![Bower version](https://badge.fury.io/bo/storage-pro.svg)](https://badge.fury.io/bo/storage-pro)
-[![GitHub version](https://badge.fury.io/gh/D-Mobilelab%2Fstorage-pro.svg?v=1)](https://badge.fury.io/gh/D-Mobilelab%2Fstorage-pro)
+[![GitHub version](https://badge.fury.io/gh/D-Mobilelab%2Fstorage-pro.svg?v=1)](https://badge.fury.io/gh/D-Mobilelab%2Fstorage-pro) [![Greenkeeper badge](https://badges.greenkeeper.io/D-Mobilelab/storage-pro.svg)](https://greenkeeper.io/)
 
 storage-pro is a library to set and get data in different ways.
 
